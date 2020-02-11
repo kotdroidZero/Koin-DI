@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.app.koincrsample.userlist.UserListViewModel" />
+
+        <variable
+            name="user"
+            type="com.app.koincrsample.data.model.response.UserListResponse.User" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base8dp">
+
+        <ImageView
+            android:id="@+id/ivUserImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Andrew Simonds"
+            app:layout_constraintBottom_toTopOf="@id/tvUserEmail"
+            app:layout_constraintStart_toEndOf="@+id/ivUserImage"
+            app:layout_constraintTop_toTopOf="@id/ivUserImage"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/tvUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Andrew Simonds@gmail.com"
+            app:layout_constraintBottom_toBottomOf="@id/ivUserImage"
+            app:layout_constraintStart_toStartOf="@id/tvUserName"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

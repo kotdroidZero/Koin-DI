@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.app.koincrsample.userlist.UserListViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="@dimen/width_match_constraint"
+            android:layout_height="@dimen/height_match_constraint"
+            app:layout_constraintBottom_toTopOf="@id/btnGetUsers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/btnGetUsers"
+            android:layout_width="@dimen/width_match_constraint"
+            android:layout_height="wrap_content"
+            android:text="@string/get_users"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <!--region Loader-->
+        <include
+            android:id="@+id/include_layout_loader"
+            layout="@layout/layout_loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.getLoading() ? View.VISIBLE : View.GONE}" />
+
+        <!--endregion-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

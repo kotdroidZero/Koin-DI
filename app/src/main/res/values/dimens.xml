@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_match_constraint">0dp</dimen>
+    <dimen name="height_match_constraint">0dp</dimen>
+    <dimen name="base20dp">20dp</dimen>
+    <dimen name="base8dp">8dp</dimen>
+</resources>
