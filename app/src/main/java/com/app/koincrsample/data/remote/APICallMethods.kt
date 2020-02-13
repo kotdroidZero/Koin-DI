@@ -17,4 +17,8 @@ interface APICallMethods {
 
     @GET("/api/users?page=2")
     suspend fun getUsers(): UserListResponse
+
+/*
+    @GET("/api/users?delay=3")
+    suspend fun getDelayedResponse():*/
 }

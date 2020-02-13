@@ -84,7 +84,7 @@ dependencies {
     def okhttp_version = "4.2.2"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
-    // Data binding
+    // Data viewDataBinding
     kapt 'com.android.databinding:compiler:3.1.4'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 

@@ -4,13 +4,12 @@ import android.app.Application
 import com.app.koincrsample.data.local.prefs.prefModule
 import com.app.koincrsample.data.remote.networkModule
 import com.app.koincrsample.data.remote.repositoryModule
-import com.app.koincrsample.ui.login.loginFragmentModule
-import com.app.koincrsample.ui.login.loginViewModelModule
+import com.app.koincrsample.ui.starter.mainViewModelModule
+import com.app.koincrsample.ui.starter.mainActivityModule
 import com.app.koincrsample.ui.userlist.userListFragmentModule
-import com.app.koincrsample.ui.userlist.userListViewModelModule
 import com.app.koincrsample.ui.userlist.usersListViewModelModule
-import com.app.koincrsample.ui.weatherforecast.weatherFragmentModule
-import com.app.koincrsample.ui.weatherforecast.weatherViewModelModule
+import com.app.koincrsample.ui.weather.weatherFragmentModule
+import com.app.koincrsample.ui.weather.weatherViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -29,9 +28,13 @@ class ApplicationGlobal : Application() {
             androidContext(this@ApplicationGlobal)
             modules(
                 listOf(
+                    //Basic Module
                     prefModule, networkModule, repositoryModule,
-                    loginFragmentModule, loginViewModelModule,
+                    //MainActivity Module
+                    mainActivityModule, mainViewModelModule,
+                    //Weather Module
                     weatherFragmentModule, weatherViewModelModule,
+                    //UserList Module
                     userListFragmentModule, usersListViewModelModule
                 )
             )

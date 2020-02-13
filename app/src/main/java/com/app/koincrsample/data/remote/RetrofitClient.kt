@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val networkModule = module {
     factory { AuthInterceptor() }
-    factory { provideOkHttpClient(get()) }
+    single { provideOkHttpClient(get()) }
     factory { provideForecastApi(get()) }
     factory { provideLoggingInterceptor() }
     single { provideRetrofit(get()) }

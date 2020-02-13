@@ -6,4 +6,5 @@
 
 
     <color name="loaderBackground">#50000000</color>
+    <color name="colorTransparent">#00000000</color>
 </resources>

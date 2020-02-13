@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.app.koincrsample.ui.weatherforecast.WeatherViewModel" />
+            type="com.app.koincrsample.ui.weather.WeatherViewModel" />
 
     </data>
 

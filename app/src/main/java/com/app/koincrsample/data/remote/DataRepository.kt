@@ -7,7 +7,7 @@ import com.app.koincrsample.data.model.response.Weather
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    factory { DataRepository(get(), get()) }
+    single { DataRepository(get(), get()) }
 }
 
 class DataRepository(

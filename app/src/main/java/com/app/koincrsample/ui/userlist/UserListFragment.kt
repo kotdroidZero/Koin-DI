@@ -1,18 +1,11 @@
 package com.app.koincrsample.ui.userlist
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-
 import androidx.lifecycle.Observer
 import com.app.koincrsample.BR
 import com.app.koincrsample.R
-import com.app.koincrsample.data.model.custom.Status
+import com.app.koincrsample.base.BaseFragment
+import com.app.koincrsample.data.model.response.UserListResponse
 import com.app.koincrsample.databinding.FragmentUserListBinding
-import com.app.koincrsample.utils.showToast
 import kotlinx.android.synthetic.main.fragment_user_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.dsl.module
@@ -30,34 +23,20 @@ val userListFragmentModule = module {
     factory { UserListFragment() }
 }
 
-class UserListFragment : Fragment() {
+class UserListFragment :
+    BaseFragment<FragmentUserListBinding, UsersListViewModel>(R.layout.fragment_user_list),
+    UserListViewActor {
 
     private val mViewModel: UsersListViewModel by viewModel()
-    private lateinit var binding: FragmentUserListBinding
     private val mAdapter by lazy { UserListAdapter(mViewModel) }
 
+    override val viewModel: UsersListViewModel
+        get() = mViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override val bindingVariable: Int
+        get() = BR.viewModel
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_list, container, false)
-        return binding.root
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // set binding variables
-        binding.setVariable(BR.viewModel, mViewModel)
-
-        // set lifeCycleOwner
-        binding.lifecycleOwner = this
-        binding.executePendingBindings()
-
+    override fun init() {
         // set adapter
         recyclerView.adapter = mAdapter
 
@@ -65,24 +44,17 @@ class UserListFragment : Fragment() {
         observeData()
     }
 
+
     /**
      * fun to observe all the liveData
      */
-    private fun observeData() {
+    override fun observeData() {
 
-        // observe user list reponse
-        mViewModel.userListResponse.observe(viewLifecycleOwner, Observer {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    mViewModel.getLoading().value = false
-                    mAdapter.updateList(it.data?.user ?: emptyList())
-                }
-                Status.ERROR -> {
-                    mViewModel.getLoading().value = false
-                    showToast(message = it.message)
-                }
-                Status.LOADING -> {
-                    mViewModel.getLoading().value = mViewModel.getLoading().value?.not()
+
+        mViewModel.getResult<UserListResponse>().observe(viewLifecycleOwner, Observer {
+            when (it.data) {
+                is UserListResponse -> {
+                    mAdapter.updateList(it.data.user)
                 }
             }
         })
