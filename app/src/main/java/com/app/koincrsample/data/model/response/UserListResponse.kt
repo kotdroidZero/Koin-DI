@@ -18,7 +18,7 @@ data class UserListResponse(
     val total: Int, // 12
     @SerializedName("total_pages")
     val totalPages: Int // 2
-) {
+) : BaseTypeSafetyResponse() {
     data class User(
         @SerializedName("avatar")
         val avatar: String, // https://s3.amazonaws.com/uifaces/faces/twitter/hebertialmeida/128.jpg
@@ -30,5 +30,8 @@ data class UserListResponse(
         val id: Int, // 12
         @SerializedName("last_name")
         val lastName: String // Howell
-    )
+    ) : BaseTypeSafetyResponse() {
+
+        fun getFullName(): String = firstName.plus(" ").plus(lastName)
+    }
 }

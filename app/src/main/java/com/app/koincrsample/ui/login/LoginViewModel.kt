@@ -1,4 +1,4 @@
-package com.app.koincrsample.login
+package com.app.koincrsample.ui.login
 
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel

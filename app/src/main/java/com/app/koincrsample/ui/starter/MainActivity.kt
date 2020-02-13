@@ -1,8 +1,10 @@
-package com.app.koincrsample
+package com.app.koincrsample.ui.starter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.app.koincrsample.weatherforecast.WeatherFragment
+import com.app.koincrsample.R
+import com.app.koincrsample.ui.userlist.UserListFragment
+import com.app.koincrsample.ui.weatherforecast.WeatherFragment
 
 
 /**
@@ -15,7 +17,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().add(R.id.flMainContainer, WeatherFragment())
+        supportFragmentManager.beginTransaction().add(
+            R.id.flMainContainer,
+            UserListFragment()
+        )
             .commit()
     }
 }

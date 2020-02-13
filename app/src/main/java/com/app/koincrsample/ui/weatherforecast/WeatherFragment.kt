@@ -1,4 +1,4 @@
-package com.app.koincrsample.weatherforecast
+package com.app.koincrsample.ui.weatherforecast
 
 
 import android.annotation.SuppressLint
@@ -55,14 +55,25 @@ class WeatherFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.executePendingBindings()
 
+        // observe data
+        observeData()
+
+    }
+
+    /**
+     * fun to observe all the liveData
+     */
+    private fun observeData() {
         weatherViewModel.weather.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
+                    weatherViewModel.getLoading().value = false
                     binding.tvWeatherReport.text = ""
                     binding.tvWeatherReport.text =
                         "Temperature at ${it.data?.name} is ${it.data?.temp?.temp} celcius"
                 }
                 Status.ERROR -> {
+                    weatherViewModel.getLoading().value = false
                     showToast(message = it.message)
                 }
                 Status.LOADING -> {

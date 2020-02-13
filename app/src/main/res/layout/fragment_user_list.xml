@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.app.koincrsample.userlist.UserListViewModel" />
+            type="com.app.koincrsample.ui.userlist.UsersListViewModel" />
 
     </data>
 
@@ -18,8 +18,11 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="@dimen/width_match_constraint"
             android:layout_height="@dimen/height_match_constraint"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@id/btnGetUsers"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +36,8 @@
             android:text="@string/get_users"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:onSingleClick="@{() -> viewModel.getUsers()}" />
 
 
         <!--region Loader-->

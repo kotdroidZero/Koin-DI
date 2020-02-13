@@ -4,10 +4,6 @@ import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
 
-enum class ErrorCodes(val code: Int) {
-    SocketTimeOut(-1)
-}
-
 open class ResponseHandler {
 
     fun <T : Any> handleSuccess(data: T): Resource<T> {
@@ -32,5 +28,9 @@ open class ResponseHandler {
             404 -> "Not found"
             else -> "Something went wrong"
         }
+    }
+
+    enum class ErrorCodes(val code: Int) {
+        SocketTimeOut(-1)
     }
 }

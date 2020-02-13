@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.app.koincrsample.userlist.UserListViewModel" />
+            type="com.app.koincrsample.ui.userlist.UsersListViewModel" />
 
         <variable
             name="user"
@@ -23,6 +23,7 @@
             android:id="@+id/ivUserImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            app:image_path="@{user.avatar}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Andrew Simonds"
+            android:text="@{user.getFullName()}"
             app:layout_constraintBottom_toTopOf="@id/tvUserEmail"
             app:layout_constraintStart_toEndOf="@+id/ivUserImage"
             app:layout_constraintTop_toTopOf="@id/ivUserImage"
@@ -41,7 +42,7 @@
             android:id="@+id/tvUserEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Andrew Simonds@gmail.com"
+            android:text="@{user.email}"
             app:layout_constraintBottom_toBottomOf="@id/ivUserImage"
             app:layout_constraintStart_toStartOf="@id/tvUserName"
             app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
