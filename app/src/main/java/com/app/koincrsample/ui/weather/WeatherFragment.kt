@@ -62,6 +62,15 @@ class WeatherFragment :
                     }
                 }
             })
+
+
+        // observe data using flow
+        viewModel.weatherForecast?.observe(viewLifecycleOwner, Observer {
+
+
+            viewDataBinding.btnGetTempUsingFlow.text = ""
+            viewDataBinding.btnGetTempUsingFlow.text = it.toString()
+        })
     }
     //endregion
 

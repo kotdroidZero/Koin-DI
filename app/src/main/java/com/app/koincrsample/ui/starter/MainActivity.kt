@@ -4,7 +4,7 @@ import com.app.koincrsample.BR
 import com.app.koincrsample.R
 import com.app.koincrsample.base.BaseActivity
 import com.app.koincrsample.databinding.ActivityMainBinding
-import com.app.koincrsample.ui.userlist.UserListFragment
+import com.app.koincrsample.ui.weather.WeatherFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.dsl.module
 
@@ -41,7 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         get() = false
 
     override fun init() {
-        supportFragmentManager.beginTransaction().add(R.id.flMainContainer, UserListFragment())
+        supportFragmentManager.beginTransaction().add(R.id.flMainContainer, WeatherFragment())
             .commit()
     }
 }

@@ -27,8 +27,8 @@ android {
             minifyEnabled false
             buildConfigField "String", "API_KEY", "\"2c736f4e4353604b9734fc7c9e8ab21a\""
 
-            buildConfigField "String", "API_URL", "\"https://reqres.in/\""
-//            buildConfigField "String", "API_URL", "\"https://api.openweathermap.org/data/2.5/\""
+//            buildConfigField "String", "API_URL", "\"https://reqres.in/\""
+            buildConfigField "String", "API_URL", "\"https://api.openweathermap.org/data/2.5/\""
             debuggable true
         }
     }
